@@ -9,6 +9,9 @@
 # 
 
 # YOUR CODE HERE 1 to read the file
+fp='data/travel[Times_2015_Helsinki.txt'
+data=pd.read_csv(fp,sep=';')
+
 #raise NotImplementedError()
 import pandas as pd 
 
@@ -25,6 +28,7 @@ print(data.head())
 # 
 
 # YOUR CODE HERE 2 to set `data`
+data=data.filter(['from_x','from_y','to_x','to_y'])
 
 # CODE FOR TESTING YOUR SOLUTION
 print(list(data.columns))
@@ -34,7 +38,8 @@ print(list(data.columns))
 # 
 
 # YOUR CODE HERE 3 to define empty lists orig_points and dest_points
-
+orig_points=[]
+dest_points=[]
 # CODE FOR TESTING YOUR SOLUTION
 
 # List length should be zero at this point:
@@ -68,6 +73,9 @@ print('dest_points length:', len(dest_points))
 
 # YOUR CODE HERE 4 to append points in orig_points and dest_points
 from shapely.geometry import Point
+point_orig=Point(x_o,y_o)
+point_dest=Point(x_o,y_o)
+
 
 # CODE FOR TESTING YOUR SOLUTION
 
@@ -127,7 +135,9 @@ assert len(lines) == len(data), "There should be as many lines as there are rows
 # 
 
 # YOUR CODE HERE 7 to find total length
-
+total_length=0.0
+for line in lines:
+  total_length=total_length+line.length
 # CODE FOR TESTING YOUR SOLUTION
 
 # This test print should print the total length of all lines
